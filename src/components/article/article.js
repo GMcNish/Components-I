@@ -87,8 +87,58 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'South Korean Starcraft II League Debuts in Vancouver, Canada',
+    date: 'February 28th, 2023',
+    firstParagraph: 'Starcraft tournaments and e sports in general are the athletics of the future',
+    secondParagraph: 'Some say video games take up to much energy and should be curtailed in order to stop climate change',
+    thirdParagraph: 'Players from around the world are travelling to the event for the chance to win 1 bitcoin - adding a level of volitility to the event.'
   }
 ];
+function articleMaker(data) {
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p')
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(expandButton);
+
+  date.classList.add('date');
+  expandButton.classList.add('expandButton')
+
+  expandButton.addEventListener('click', event => {
+    expandButton.classList.toggle('article-open')
+  })
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+  para1.textContent = data.firstParagraph;
+  para2.textContent = data.secondParagraph;
+  para3.textContent = data.thirdParagraph;
+  expandButton.textContent = '+';
+
+  return article;
+}
+
+const articles = document.querySelector('.articles')
+
+const articleElements = data.map(data => {
+    return articleMaker(data)
+})
+
+articleElements.forEach(articleElement => {
+  articles.appendChild(articleElement)
+})
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
