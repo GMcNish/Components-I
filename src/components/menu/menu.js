@@ -10,8 +10,69 @@ let menuItems = [
   'Log Out'
 ];
 
+
+// function menuMaker(linksArray) {
+//   const menuWrapper = document.createElement('div');
+//   const menuList = document.createElement('ul');
+  
+//   menuWrapper.appendChild(menuList);
+
+//   menuWrapper.classList.add('menu');
+
+//   linksArray.forEach(linkText => {
+//     const link = document.createElement('li');
+//     link.textContent = linkText;
+//     menuList.appendChild(link);
+//   })
+
+//   const hamMenu = document.querySelector('.menu-button');
+  
+//   hamMenu.addEventListener('click', () => {
+//     menuWrapper.classList.toggle('menu--open')
+//   })
+
+//   return menuWrapper;
+// }
+
+// console.log(menuMaker(menuItems))
+
+// document.querySelector('.header').appendChild(menuMaker(menuItems))
+
+// 
+
+function menuMaker(links) {
+  const menu = document.createElement('div');
+  const unordered = document.createElement('ul');
+
+  menu.appendChild(unordered);
+ 
+  menu.classList.add('menu');
+
+  links.forEach(item => {
+    const itemText = document.createElement('li');
+    itemText.textContent = item; 
+    unordered.appendChild(itemText);
+  })
+
+  const menuButton = document.querySelector('.menu-button');
+
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('menu--open')
+  })
+
+  return menu;
+}
+
+console.log(menuMaker(menuItems))
+
+const header = document.querySelector('.header');
+
+header.appendChild(menuMaker(menuItems))  
+
 /*
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
+
+
 
   <div class="menu">
     <ul>
